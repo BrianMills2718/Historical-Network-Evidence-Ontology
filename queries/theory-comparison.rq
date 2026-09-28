@@ -1,0 +1,10 @@
+PREFIX hneo: <https://example.org/hneo/>
+SELECT ?theoryA ?theoryB ?shared
+WHERE {
+  ?theoryA a hneo:Theory ;
+           hneo:containsProposition ?shared .
+  ?theoryB a hneo:Theory ;
+           hneo:containsProposition ?shared .
+  FILTER(str(?theoryA) < str(?theoryB))
+}
+ORDER BY ?theoryA ?theoryB ?shared
