@@ -1,0 +1,149 @@
+@prefix hneo: <https://example.org/hneo/> .
+@prefix ex: <https://example.org/hneo/example/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:entities {
+  ex:CIA a hneo:GovernmentOrganization ; hneo:preferredName "Central Intelligence Agency" .
+  ex:USNavy a hneo:GovernmentOrganization ; hneo:preferredName "United States Navy" .
+  ex:LuckyLuciano a hneo:Person ; hneo:preferredName "Charles 'Lucky' Luciano" .
+  ex:JohnnyRoselli a hneo:Person ; hneo:preferredName "Johnny Roselli" .
+  ex:SamGiancana a hneo:Person ; hneo:preferredName "Sam Giancana" .
+  ex:SantoTrafficante a hneo:Person ; hneo:preferredName "Santo Trafficante Jr." .
+  ex:RobertMaheu a hneo:Person ; hneo:preferredName "Robert Maheu" .
+  ex:OliverNorth a hneo:Person ; hneo:preferredName "Oliver North" .
+  ex:RichardSecord a hneo:Person ; hneo:preferredName "Richard Secord" .
+  ex:AlbertHakim a hneo:Person ; hneo:preferredName "Albert Hakim" .
+  ex:CarlChannell a hneo:Person ; hneo:preferredName "Carl Channell" .
+  ex:MichaelRiconosciuto a hneo:Person ; hneo:preferredName "Michael Riconosciuto" .
+  ex:DannyCasolaro a hneo:Person ; hneo:preferredName "Danny Casolaro" .
+  ex:JimHougan a hneo:Person ; hneo:preferredName "Jim Hougan" .
+  ex:MaeBrussell a hneo:Person ; hneo:preferredName "Mae Brussell" .
+  ex:DaveEmory a hneo:Person ; hneo:preferredName "Dave Emory" .
+  ex:AirAmerica a hneo:Corporation ; hneo:preferredName "Air America" .
+  ex:CAT a hneo:Corporation ; hneo:preferredName "Civil Air Transport" .
+  ex:NEPL a hneo:NonprofitOrganization ; hneo:preferredName "National Endowment for the Preservation of Liberty" .
+  ex:BCCI a hneo:Corporation ; hneo:preferredName "Bank of Credit and Commerce International" .
+  ex:Wackenhut a hneo:Corporation ; hneo:preferredName "Wackenhut Corporation" .
+  ex:INSLAW a hneo:Corporation ; hneo:preferredName "INSLAW" .
+  ex:WACL a hneo:PoliticalOrganization ; hneo:preferredName "World Anti-Communist League" .
+  ex:CongressForCulturalFreedom a hneo:NonprofitOrganization ; hneo:preferredName "Congress for Cultural Freedom" .
+  ex:TheCompany a hneo:CriminalNetwork ; hneo:preferredName "The Company (Bluegrass network)" .
+  ex:BlackTuna a hneo:CriminalNetwork ; hneo:preferredName "Black Tuna Gang" .
+}
+
+ex:world {
+  ex:OperationUnderworld a hneo:IntelligenceOperation ; hneo:preferredName "Operation Underworld" .
+  ex:CastroPlots a hneo:CovertOperation ; hneo:preferredName "CIA-Mafia anti-Castro activity" .
+  ex:ContraSupport a hneo:CovertOperation ; hneo:preferredName "Iran-Contra private support network" .
+  ex:WatergateIntelligence a hneo:PoliticalOperation ; hneo:preferredName "Watergate political intelligence operation" .
+  ex:CulturalColdWar a hneo:PoliticalOperation ; hneo:preferredName "Cultural Cold War activity" .
+  ex:BluegrassSmuggling a hneo:SmugglingOperation ; hneo:preferredName "Bluegrass smuggling activity" .
+  ex:BlackTunaSmuggling a hneo:SmugglingOperation ; hneo:preferredName "Black Tuna smuggling activity" .
+
+  ex:p1 a hneo:Participation ; hneo:participant ex:LuckyLuciano ; hneo:inActivity ex:OperationUnderworld .
+  ex:p2 a hneo:Participation ; hneo:participant ex:JohnnyRoselli ; hneo:inActivity ex:CastroPlots ; hneo:participationRole hneo:IntermediaryRole .
+  ex:p3 a hneo:Participation ; hneo:participant ex:RobertMaheu ; hneo:inActivity ex:CastroPlots ; hneo:participationRole hneo:IntermediaryRole .
+  ex:p4 a hneo:Participation ; hneo:participant ex:SamGiancana ; hneo:inActivity ex:CastroPlots .
+  ex:p5 a hneo:Participation ; hneo:participant ex:SantoTrafficante ; hneo:inActivity ex:CastroPlots .
+  ex:p6 a hneo:Participation ; hneo:participant ex:OliverNorth ; hneo:inActivity ex:ContraSupport ; hneo:participationRole hneo:OperationalCoordinator .
+  ex:p7 a hneo:Participation ; hneo:participant ex:RichardSecord ; hneo:inActivity ex:ContraSupport ; hneo:participationRole hneo:OperationalCoordinator .
+  ex:p8 a hneo:Participation ; hneo:participant ex:AlbertHakim ; hneo:inActivity ex:ContraSupport .
+  ex:p9 a hneo:Participation ; hneo:participant ex:CarlChannell ; hneo:inActivity ex:ContraSupport ; hneo:participationRole hneo:FundraiserRole .
+  ex:p10 a hneo:Participation ; hneo:participant ex:TheCompany ; hneo:inActivity ex:BluegrassSmuggling .
+  ex:p11 a hneo:Participation ; hneo:participant ex:BlackTuna ; hneo:inActivity ex:BlackTunaSmuggling .
+
+  ex:airAmericaRole a hneo:RoleHolding ;
+    hneo:bearer ex:AirAmerica ;
+    hneo:roleType hneo:ProprietaryRole ;
+    hneo:contextOrganization ex:CIA .
+
+  ex:neplFunding a hneo:FundingArrangement ;
+    hneo:funder ex:NEPL ;
+    hneo:beneficiary ex:ContraSupport ;
+    hneo:statedPurpose "Contra-related support" .
+
+  ex:ccfFunding a hneo:FundingArrangement ;
+    hneo:funder ex:CIA ;
+    hneo:beneficiary ex:CongressForCulturalFreedom ;
+    hneo:statedPurpose "Cultural and political activity" .
+}
+
+ex:propositions {
+  ex:PropCastroMafia a hneo:Proposition ; hneo:note "Organized-crime figures participated in CIA-linked anti-Castro activity." .
+  ex:PropAirAmericaProprietary a hneo:Proposition ; hneo:note "Air America functioned as a CIA proprietary." .
+  ex:PropContraPrivateNetwork a hneo:Proposition ; hneo:note "Iran-Contra used a privately organized support and finance network." .
+  ex:PropPROMISWackenhut a hneo:Proposition ; hneo:note "Wackenhut participated in covert modification or distribution of PROMIS." .
+  ex:PropOctopusUnified a hneo:Proposition ; hneo:note "The disparate scandals formed one centrally coordinated Octopus organization." .
+  ex:PropCulturalFunding a hneo:Proposition ; hneo:note "US intelligence covertly supported cultural organizations during the Cold War." .
+}
+
+ex:claims {
+  ex:ClaimCastroOfficial a hneo:Claim ;
+    hneo:claimant ex:CIA ;
+    hneo:proposition ex:PropCastroMafia ;
+    hneo:beliefValue hneo:BeliefTrue .
+
+  ex:ClaimPROMISRiconosciuto a hneo:Claim ;
+    hneo:claimant ex:MichaelRiconosciuto ;
+    hneo:proposition ex:PropPROMISWackenhut ;
+    hneo:beliefValue hneo:BeliefTrue .
+
+  ex:ClaimPROMISDenial a hneo:Claim ;
+    hneo:claimant ex:Wackenhut ;
+    hneo:proposition ex:PropPROMISWackenhut ;
+    hneo:beliefValue hneo:BeliefFalse .
+
+  ex:ClaimOctopusCasolaro a hneo:Claim ;
+    hneo:claimant ex:DannyCasolaro ;
+    hneo:proposition ex:PropOctopusUnified ;
+    hneo:beliefValue hneo:BeliefTrue .
+}
+
+ex:assessments {
+  ex:AssessCastro a hneo:EpistemicAssessment ;
+    hneo:assessesProposition ex:PropCastroMafia ;
+    hneo:assessmentStatus hneo:Documented .
+
+  ex:AssessAirAmerica a hneo:EpistemicAssessment ;
+    hneo:assessesProposition ex:PropAirAmericaProprietary ;
+    hneo:assessmentStatus hneo:Documented .
+
+  ex:AssessContra a hneo:EpistemicAssessment ;
+    hneo:assessesProposition ex:PropContraPrivateNetwork ;
+    hneo:assessmentStatus hneo:Documented .
+
+  ex:AssessCultural a hneo:EpistemicAssessment ;
+    hneo:assessesProposition ex:PropCulturalFunding ;
+    hneo:assessmentStatus hneo:Documented .
+
+  ex:AssessPROMIS a hneo:EpistemicAssessment ;
+    hneo:assessesProposition ex:PropPROMISWackenhut ;
+    hneo:assessmentStatus hneo:Unresolved .
+
+  ex:AssessOctopus a hneo:EpistemicAssessment ;
+    hneo:assessesProposition ex:PropOctopusUnified ;
+    hneo:assessmentStatus hneo:Unresolved .
+}
+
+ex:theories {
+  ex:CasolaroOctopus a hneo:NetworkHypothesis ;
+    hneo:preferredName "Casolaro Octopus hypothesis" ;
+    hneo:proposedBy ex:DannyCasolaro ;
+    hneo:containsProposition ex:PropPROMISWackenhut, ex:PropOctopusUnified, ex:PropContraPrivateNetwork .
+
+  ex:HouganPrivateIntelligence a hneo:NetworkHypothesis ;
+    hneo:preferredName "Hougan private-intelligence framework" ;
+    hneo:proposedBy ex:JimHougan ;
+    hneo:containsProposition ex:PropCastroMafia, ex:PropCulturalFunding .
+
+  ex:BrussellNetworkModel a hneo:NetworkHypothesis ;
+    hneo:preferredName "Brussell network model" ;
+    hneo:proposedBy ex:MaeBrussell ;
+    hneo:containsProposition ex:PropOctopusUnified .
+
+  ex:EmoryContinuityModel a hneo:NetworkHypothesis ;
+    hneo:preferredName "Emory continuity model" ;
+    hneo:proposedBy ex:DaveEmory ;
+    hneo:containsProposition ex:PropOctopusUnified, ex:PropCulturalFunding .
+}
