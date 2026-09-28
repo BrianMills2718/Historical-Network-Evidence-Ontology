@@ -1,0 +1,29 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix hneo: <https://example.org/hneo/> .
+
+hneo:ParticipationShape a sh:NodeShape ;
+  sh:targetClass hneo:Participation ;
+  sh:property [ sh:path hneo:participant ; sh:minCount 1 ] ;
+  sh:property [ sh:path hneo:inActivity ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+hneo:ClaimShape a sh:NodeShape ;
+  sh:targetClass hneo:Claim ;
+  sh:property [ sh:path hneo:claimant ; sh:minCount 1 ] ;
+  sh:property [ sh:path hneo:proposition ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path hneo:beliefValue ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+hneo:AssessmentShape a sh:NodeShape ;
+  sh:targetClass hneo:EpistemicAssessment ;
+  sh:property [ sh:path hneo:assessesProposition ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path hneo:assessmentStatus ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+hneo:EvidenceUseShape a sh:NodeShape ;
+  sh:targetClass hneo:EvidenceUse ;
+  sh:property [ sh:path hneo:evidenceSource ; sh:minCount 1 ] ;
+  sh:property [ sh:path hneo:evidenceFor ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path hneo:evidencePolarity ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+hneo:FinancialTransferShape a sh:NodeShape ;
+  sh:targetClass hneo:FinancialTransfer ;
+  sh:property [ sh:path hneo:transferor ; sh:minCount 1 ] ;
+  sh:property [ sh:path hneo:transferee ; sh:minCount 1 ] .
