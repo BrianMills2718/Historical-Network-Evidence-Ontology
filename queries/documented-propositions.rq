@@ -1,0 +1,9 @@
+PREFIX hneo: <https://example.org/hneo/>
+SELECT ?proposition ?status
+WHERE {
+  ?assessment a hneo:EpistemicAssessment ;
+              hneo:assessesProposition ?proposition ;
+              hneo:assessmentStatus ?status .
+  FILTER(?status IN (hneo:Documented, hneo:StronglySupported))
+}
+ORDER BY ?proposition
