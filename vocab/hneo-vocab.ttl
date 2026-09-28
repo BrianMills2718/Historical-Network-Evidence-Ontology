@@ -1,0 +1,36 @@
+@prefix hneo: <https://example.org/hneo/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+hneo:Documented a hneo:EpistemicStatus ; skos:prefLabel "Documented" .
+hneo:StronglySupported a hneo:EpistemicStatus ; skos:prefLabel "Strongly supported" .
+hneo:Supported a hneo:EpistemicStatus ; skos:prefLabel "Supported" .
+hneo:Plausible a hneo:EpistemicStatus ; skos:prefLabel "Plausible" .
+hneo:Unresolved a hneo:EpistemicStatus ; skos:prefLabel "Unresolved" .
+hneo:Disputed a hneo:EpistemicStatus ; skos:prefLabel "Disputed" .
+hneo:WeaklySupported a hneo:EpistemicStatus ; skos:prefLabel "Weakly supported" .
+hneo:Contradicted a hneo:EpistemicStatus ; skos:prefLabel "Contradicted" .
+hneo:Disconfirmed a hneo:EpistemicStatus ; skos:prefLabel "Disconfirmed" .
+hneo:NotAssessed a hneo:EpistemicStatus ; skos:prefLabel "Not assessed" .
+
+hneo:BeliefTrue a hneo:BeliefValue ; skos:prefLabel "True" .
+hneo:BeliefFalse a hneo:BeliefValue ; skos:prefLabel "False" .
+hneo:BeliefUnknown a hneo:BeliefValue ; skos:prefLabel "Unknown" .
+
+hneo:Supports a hneo:EvidencePolarity ; skos:prefLabel "Supports" .
+hneo:Contradicts a hneo:EvidencePolarity ; skos:prefLabel "Contradicts" .
+hneo:Contextualizes a hneo:EvidencePolarity ; skos:prefLabel "Contextualizes" .
+
+hneo:IntelligenceOfficer a hneo:RoleType ; skos:prefLabel "Intelligence officer" .
+hneo:IntermediaryRole a hneo:RoleType ; skos:prefLabel "Intermediary" .
+hneo:DonorRole a hneo:RoleType ; skos:prefLabel "Donor" .
+hneo:FundraiserRole a hneo:RoleType ; skos:prefLabel "Fundraiser" .
+hneo:OperationalCoordinator a hneo:RoleType ; skos:prefLabel "Operational coordinator" .
+hneo:SmugglerRole a hneo:RoleType ; skos:prefLabel "Smuggler" .
+hneo:BoardMemberRole a hneo:RoleType ; skos:prefLabel "Board member" .
+
+hneo:ProprietaryRole a hneo:OrganizationRoleType ; skos:prefLabel "Proprietary" .
+hneo:FrontRole a hneo:OrganizationRoleType ; skos:prefLabel "Front" .
+hneo:FundingConduitRole a hneo:OrganizationRoleType ; skos:prefLabel "Funding conduit" .
+hneo:CutoutRole a hneo:OrganizationRoleType ; skos:prefLabel "Cutout" .
+hneo:ContractorRole a hneo:OrganizationRoleType ; skos:prefLabel "Contractor" .
+hneo:ShellCompanyRole a hneo:OrganizationRoleType ; skos:prefLabel "Shell company" .
