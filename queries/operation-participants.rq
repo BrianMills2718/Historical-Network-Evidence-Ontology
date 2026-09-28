@@ -1,0 +1,9 @@
+PREFIX hneo: <https://example.org/hneo/>
+SELECT ?activity ?participant ?role
+WHERE {
+  ?p a hneo:Participation ;
+     hneo:participant ?participant ;
+     hneo:inActivity ?activity .
+  OPTIONAL { ?p hneo:participationRole ?role }
+}
+ORDER BY ?activity ?participant
