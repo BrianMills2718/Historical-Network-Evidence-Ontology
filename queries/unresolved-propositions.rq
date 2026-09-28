@@ -1,0 +1,8 @@
+PREFIX hneo: <https://example.org/hneo/>
+SELECT ?proposition
+WHERE {
+  ?assessment a hneo:EpistemicAssessment ;
+              hneo:assessesProposition ?proposition ;
+              hneo:assessmentStatus hneo:Unresolved .
+}
+ORDER BY ?proposition
