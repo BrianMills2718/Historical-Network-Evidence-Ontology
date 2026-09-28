@@ -1,0 +1,11 @@
+PREFIX hneo: <https://example.org/hneo/>
+SELECT ?proposition ?claimTrue ?claimFalse
+WHERE {
+  ?claimTrue a hneo:Claim ;
+             hneo:proposition ?proposition ;
+             hneo:beliefValue hneo:BeliefTrue .
+  ?claimFalse a hneo:Claim ;
+              hneo:proposition ?proposition ;
+              hneo:beliefValue hneo:BeliefFalse .
+  FILTER(?claimTrue != ?claimFalse)
+}
