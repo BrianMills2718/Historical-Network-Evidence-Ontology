@@ -1,0 +1,142 @@
+@prefix hneo: <https://example.org/hneo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+hneo: a owl:Ontology ;
+  rdfs:label "Historical Network & Evidence Ontology" ;
+  rdfs:comment "Application ontology for evidence-aware historical network research." .
+
+### Core entities
+hneo:Entity a owl:Class .
+hneo:Agent a owl:Class ; rdfs:subClassOf hneo:Entity, prov:Agent .
+hneo:Person a owl:Class ; rdfs:subClassOf hneo:Agent .
+hneo:CollectiveAgent a owl:Class ; rdfs:subClassOf hneo:Agent .
+hneo:Organization a owl:Class ; rdfs:subClassOf hneo:CollectiveAgent, org:Organization .
+hneo:InformalCollective a owl:Class ; rdfs:subClassOf hneo:CollectiveAgent .
+hneo:Network a owl:Class ; rdfs:subClassOf hneo:InformalCollective .
+hneo:Milieu a owl:Class ; rdfs:subClassOf hneo:InformalCollective .
+hneo:GovernmentOrganization a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:Corporation a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:Foundation a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:LaborOrganization a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:PoliticalOrganization a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:NonprofitOrganization a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:MediaOrganization a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:University a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:ReligiousOrganization a owl:Class ; rdfs:subClassOf hneo:Organization .
+hneo:CriminalNetwork a owl:Class ; rdfs:subClassOf hneo:Network .
+
+hneo:Place a owl:Class ; rdfs:subClassOf hneo:Entity .
+hneo:MaterialEntity a owl:Class ; rdfs:subClassOf hneo:Entity .
+hneo:FinancialEntity a owl:Class ; rdfs:subClassOf hneo:Entity .
+hneo:InformationObject a owl:Class ; rdfs:subClassOf hneo:Entity, prov:Entity .
+hneo:Document a owl:Class ; rdfs:subClassOf hneo:InformationObject .
+hneo:SourceFragment a owl:Class ; rdfs:subClassOf hneo:InformationObject .
+
+### Temporal entities
+hneo:TemporalEntity a owl:Class .
+hneo:Event a owl:Class ; rdfs:subClassOf hneo:TemporalEntity .
+hneo:Activity a owl:Class ; rdfs:subClassOf hneo:TemporalEntity, prov:Activity .
+hneo:Operation a owl:Class ; rdfs:subClassOf hneo:Activity .
+hneo:IntelligenceOperation a owl:Class ; rdfs:subClassOf hneo:Operation .
+hneo:CovertOperation a owl:Class ; rdfs:subClassOf hneo:Operation .
+hneo:PoliticalOperation a owl:Class ; rdfs:subClassOf hneo:Operation .
+hneo:CriminalOperation a owl:Class ; rdfs:subClassOf hneo:Operation .
+hneo:SmugglingOperation a owl:Class ; rdfs:subClassOf hneo:Operation .
+hneo:FundraisingOperation a owl:Class ; rdfs:subClassOf hneo:Operation .
+hneo:CommunicationEvent a owl:Class ; rdfs:subClassOf hneo:Event .
+hneo:Meeting a owl:Class ; rdfs:subClassOf hneo:Event .
+hneo:FinancialTransfer a owl:Class ; rdfs:subClassOf hneo:Activity .
+
+### Relational situations
+hneo:RelationalSituation a owl:Class .
+hneo:Participation a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:RoleHolding a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:Membership a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:Employment a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:PositionHolding a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:FundingArrangement a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:OwnershipRelationship a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:ControlRelationship a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:InfluenceRelationship a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:Tasking a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:Intermediation a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:OperationalRelationship a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:IntelligenceRelationship a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:StateCriminalInteraction a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:CulturalRelationship a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:LaborRelationship a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+hneo:NetworkParticipation a owl:Class ; rdfs:subClassOf hneo:RelationalSituation .
+
+### Epistemic layer
+hneo:Proposition a owl:Class ; rdfs:subClassOf hneo:InformationObject .
+hneo:Claim a owl:Class ; rdfs:subClassOf hneo:InformationObject .
+hneo:EvidenceUse a owl:Class .
+hneo:Argument a owl:Class ; rdfs:subClassOf hneo:InformationObject .
+hneo:Inference a owl:Class ; rdfs:subClassOf hneo:Activity .
+hneo:Assessment a owl:Class ; rdfs:subClassOf hneo:InformationObject .
+hneo:EpistemicAssessment a owl:Class ; rdfs:subClassOf hneo:Assessment .
+hneo:Theory a owl:Class ; rdfs:subClassOf hneo:InformationObject .
+hneo:NetworkHypothesis a owl:Class ; rdfs:subClassOf hneo:Theory .
+hneo:InstitutionalCaptureHypothesis a owl:Class ; rdfs:subClassOf hneo:Theory .
+hneo:IdentityHypothesis a owl:Class ; rdfs:subClassOf hneo:Theory .
+
+### Roles
+hneo:RoleType a owl:Class ; rdfs:subClassOf skos:Concept .
+hneo:OrganizationRoleType a owl:Class ; rdfs:subClassOf hneo:RoleType .
+hneo:EpistemicStatus a owl:Class ; rdfs:subClassOf skos:Concept .
+hneo:BeliefValue a owl:Class ; rdfs:subClassOf skos:Concept .
+hneo:EvidencePolarity a owl:Class ; rdfs:subClassOf skos:Concept .
+
+### Core properties
+hneo:participant a owl:ObjectProperty ; rdfs:domain hneo:Participation ; rdfs:range hneo:Agent .
+hneo:inActivity a owl:ObjectProperty ; rdfs:domain hneo:Participation ; rdfs:range hneo:Activity .
+hneo:participationRole a owl:ObjectProperty ; rdfs:domain hneo:Participation ; rdfs:range hneo:RoleType .
+hneo:bearer a owl:ObjectProperty ; rdfs:domain hneo:RoleHolding ; rdfs:range hneo:Agent .
+hneo:roleType a owl:ObjectProperty ; rdfs:domain hneo:RoleHolding ; rdfs:range hneo:RoleType .
+hneo:contextOrganization a owl:ObjectProperty ; rdfs:domain hneo:RoleHolding ; rdfs:range hneo:Organization .
+hneo:member a owl:ObjectProperty ; rdfs:domain hneo:Membership ; rdfs:range hneo:Agent .
+hneo:memberOf a owl:ObjectProperty ; rdfs:domain hneo:Membership ; rdfs:range hneo:CollectiveAgent .
+hneo:employee a owl:ObjectProperty ; rdfs:domain hneo:Employment ; rdfs:range hneo:Person .
+hneo:employer a owl:ObjectProperty ; rdfs:domain hneo:Employment ; rdfs:range hneo:Organization .
+hneo:funder a owl:ObjectProperty ; rdfs:domain hneo:FundingArrangement ; rdfs:range hneo:Agent .
+hneo:beneficiary a owl:ObjectProperty ; rdfs:domain hneo:FundingArrangement ; rdfs:range hneo:Agent .
+hneo:transferor a owl:ObjectProperty ; rdfs:domain hneo:FinancialTransfer ; rdfs:range hneo:Agent .
+hneo:transferee a owl:ObjectProperty ; rdfs:domain hneo:FinancialTransfer ; rdfs:range hneo:Agent .
+hneo:intermediary a owl:ObjectProperty ; rdfs:domain hneo:Intermediation ; rdfs:range hneo:Agent .
+hneo:principal a owl:ObjectProperty ; rdfs:domain hneo:Intermediation ; rdfs:range hneo:Agent .
+hneo:counterparty a owl:ObjectProperty ; rdfs:domain hneo:Intermediation ; rdfs:range hneo:Agent .
+hneo:subjectActivity a owl:ObjectProperty ; rdfs:domain hneo:Intermediation ; rdfs:range hneo:Activity .
+hneo:controller a owl:ObjectProperty ; rdfs:domain hneo:ControlRelationship ; rdfs:range hneo:Agent .
+hneo:controlledEntity a owl:ObjectProperty ; rdfs:domain hneo:ControlRelationship ; rdfs:range hneo:Entity .
+hneo:influencer a owl:ObjectProperty ; rdfs:domain hneo:InfluenceRelationship ; rdfs:range hneo:Agent .
+hneo:influenceTarget a owl:ObjectProperty ; rdfs:domain hneo:InfluenceRelationship ; rdfs:range hneo:Entity .
+hneo:claimant a owl:ObjectProperty ; rdfs:domain hneo:Claim ; rdfs:range hneo:Agent .
+hneo:proposition a owl:ObjectProperty ; rdfs:domain hneo:Claim ; rdfs:range hneo:Proposition .
+hneo:beliefValue a owl:ObjectProperty ; rdfs:domain hneo:Claim ; rdfs:range hneo:BeliefValue .
+hneo:assessesProposition a owl:ObjectProperty ; rdfs:domain hneo:EpistemicAssessment ; rdfs:range hneo:Proposition .
+hneo:assessmentStatus a owl:ObjectProperty ; rdfs:domain hneo:EpistemicAssessment ; rdfs:range hneo:EpistemicStatus .
+hneo:evidenceSource a owl:ObjectProperty ; rdfs:domain hneo:EvidenceUse ; rdfs:range hneo:InformationObject .
+hneo:evidenceFor a owl:ObjectProperty ; rdfs:domain hneo:EvidenceUse ; rdfs:range hneo:Proposition .
+hneo:evidencePolarity a owl:ObjectProperty ; rdfs:domain hneo:EvidenceUse ; rdfs:range hneo:EvidencePolarity .
+hneo:containsProposition a owl:ObjectProperty ; rdfs:domain hneo:Theory ; rdfs:range hneo:Proposition .
+hneo:proposedBy a owl:ObjectProperty ; rdfs:domain hneo:Theory ; rdfs:range hneo:Agent .
+hneo:sourceFragmentOf a owl:ObjectProperty ; rdfs:domain hneo:SourceFragment ; rdfs:range hneo:InformationObject .
+hneo:during a owl:ObjectProperty ; rdfs:range time:TemporalEntity .
+hneo:validDuring a owl:ObjectProperty ; rdfs:range time:TemporalEntity .
+
+### Data properties
+hneo:preferredName a owl:DatatypeProperty ; rdfs:range xsd:string .
+hneo:alias a owl:DatatypeProperty ; rdfs:range xsd:string .
+hneo:amount a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+hneo:currency a owl:DatatypeProperty ; rdfs:range xsd:string .
+hneo:statedPurpose a owl:DatatypeProperty ; rdfs:range xsd:string .
+hneo:page a owl:DatatypeProperty ; rdfs:range xsd:string .
+hneo:section a owl:DatatypeProperty ; rdfs:range xsd:string .
+hneo:note a owl:DatatypeProperty ; rdfs:range xsd:string .
